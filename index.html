@@ -5,7 +5,6 @@
   <title>DEKIMU SPACE ORGANIZATION | Playbook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* [FULL CSS RETAINED FROM YOUR ORIGINAL FILE] */
     html, body {
       height: 100%;
       margin: 0;
@@ -277,7 +276,6 @@
       border-radius: 16px;
       box-shadow: 0 6px 32px #1e293b88, 0 1.5px 10px rgba(0,0,0,0.12);
     }
-    /* --- RESPONSIVE --- */
     @media (max-width: 900px) {
       .playbook-container {
         flex-direction: column;
@@ -329,7 +327,6 @@
       .cta { font-size: 0.98rem; }
       .director-fullsize { max-width: 100vw; }
     }
-    /* === LOGIN OVERLAY AND ARROW === */
     #loginScreen {
       position: fixed;
       z-index: 9999;
@@ -379,7 +376,6 @@
       0%, 100% { transform: translateY(0);}
       50% { transform: translateY(15px);}
     }
-    /* --- TEAM CARDS --- */
     #teamContainer > div {
       min-width: 220px;
       max-width: 260px;
@@ -503,7 +499,6 @@
         <section id="gallery" class="section" style="display:none">
           <h2>Gallery</h2>
           <div class="gallery">
-            <!-- [FULL GALLERY IMAGES RETAINED] -->
             <figure>
               <a href="P 1.jpg" target="_blank"><img src="P 1.jpg" alt="Chairperson" style="--i:1"></a>
               <figcaption>“Leadership is the capacity to translate vision into reality.”</figcaption>
@@ -749,33 +744,7 @@
             `).join('');
           }
         }).catch(()=>{});
-      // KNOWLEDGE BASE: Load and display entries
-      fetch('data/knowledge-base.json')
-        .then(response => response.json())
-        .then(entries => {
-          const kbDiv = document.getElementById('kb-container');
-          if (kbDiv) {
-            kbDiv.innerHTML = entries.map(entry => `
-              <div style="
-                background:#1e293b;
-                border-radius:12px;
-                margin-bottom:18px;
-                padding:18px;
-                box-shadow:0 2px 10px #2563eb33;
-              ">
-                ${entry.image ? `<img src="images/${entry.image}" alt="${entry.title}" style="max-width:180px;width:100%;border-radius:10px;margin-bottom:7px;">` : ""}
-                <h3 style="color:#60a5fa;">${entry.title}</h3>
-                <p style="color:#e0f2fe;">${entry.content}</p>
-                <small style="color:#bae6fd;">By ${entry.author} on ${entry.date}</small>
-                <div style="color:#fbbf24;">${entry.tags ? entry.tags.join(', ') : ''}</div>
-              </div>
-            `).join('');
-          }
-        })
-        .catch(()=>{
-          const kbDiv = document.getElementById('kb-container');
-          if (kbDiv) kbDiv.innerHTML = "<p style='color:#f87171;'>Knowledge Base could not be loaded.</p>";
-        });
+      // The Knowledge Base section now only uses the Google Drive iframe and does not fetch JSON.
     });
   </script>
 </body>
