@@ -1,0 +1,48 @@
+# Environment variables (NEVER commit these!)
+.env
+.env.local
+.env.production
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Logs
+*.log
+debug.log
+error.log
+server.log
+
+# Uploads (user-uploaded files)
+uploads/
+!uploads/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Build files
+dist/
+build/
+.next/
+
+# Temporary files
+*.tmp
+*.temp
+debug_token.js
+test_payment.js
+seed_purchase.js
+
+# Database
+*.db
+*.sqlite
+
+# Keep uploads folder structure
+uploads/.gitkeep

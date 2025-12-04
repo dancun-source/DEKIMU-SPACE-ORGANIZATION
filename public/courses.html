@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses | DEKIMU SPACE PROGRAM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"
+                    style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none;">
+                    <img src="DEKIMU LOGO.jpg.jpg" alt="Logo"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--secondary-color);">
+                    DEKIMU <span>SPACE</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="login.html" class="btn btn-outline btn-nav">Login</a>
+            </div>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <section class="section-padding" style="min-height: 100vh; padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Available Courses</h2>
+                <p>Expand your knowledge</p>
+            </div>
+
+            <div id="loading" class="text-center">
+                <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--secondary-color);"></i>
+            </div>
+
+            <div id="courses-grid" class="courses-grid">
+                <!-- Courses will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        async function fetchCourses() {
+            try {
+                const res = await fetch('/api/courses');
+                const courses = await res.json();
+
+                document.getElementById('loading').style.display = 'none';
+                const grid = document.getElementById('courses-grid');
+
+                if (courses.length === 0) {
+                    grid.innerHTML = '<p class="text-center" style="color: var(--text-muted);">No courses available at the moment.</p>';
+                } else {
+                    grid.innerHTML = courses.map(course => `
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="${course.thumbnail || 'DEKIMU LOGO.jpg.jpg'}" alt="${course.title}">
+                            </div>
+                            <div class="course-content">
+                                <span class="course-tag">KES ${course.price}</span>
+                                <h3>${course.title}</h3>
+                                <p>${(course.description || '').substring(0, 120)}...</p>
+                                <a href="course.html?id=${course._id}" class="btn btn-primary" style="width: 100%; text-align: center;">View Course</a>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Failed to load courses');
+            }
+        }
+
+        fetchCourses();
+
+        // Check login status for nav
+        const user = JSON.parse(localStorage.getItem('user'));
+        const navBtn = document.querySelector('.btn-nav');
+        if (user && navBtn) {
+            navBtn.textContent = 'Logout';
+            navBtn.href = '#';
+            navBtn.classList.remove('btn-outline');
+            navBtn.classList.add('btn-primary');
+            navBtn.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem('user');
+                window.location.href = 'index.html';
+            };
+        }
+    </script>
+</body>
+
+</html>

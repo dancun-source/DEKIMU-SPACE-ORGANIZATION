@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details | DEKIMU SPACE PROGRAM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"
+                    style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none;">
+                    <img src="DEKIMU LOGO.jpg.jpg" alt="Logo"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--secondary-color);">
+                    DEKIMU <span>SPACE</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">All Courses</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
+            </div>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <section class="section-padding" style="min-height: 100vh; padding-top: 120px;">
+        <div class="container">
+            <div id="loading" class="text-center">
+                <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--secondary-color);"></i>
+            </div>
+
+            <div id="course-content" style="display: none;">
+                <div class="section-header">
+                    <h2 id="course-title">Course Title</h2>
+                    <p id="course-price" style="color: var(--secondary-color); font-weight: bold; font-size: 1.5rem;">
+                    </p>
+                </div>
+
+                <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 40px;">
+                    <!-- Course Image & Description -->
+                    <div class="step-card">
+                        <div class="course-image"
+                            style="margin-bottom: 30px; border-radius: 8px; overflow: hidden; height: 300px;">
+                            <img id="course-image" src="" alt="Course Image"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h3 style="color: var(--text-main); margin-bottom: 15px;">Mission Brief</h3>
+                        <p id="course-description" style="color: var(--text-muted);"></p>
+                    </div>
+
+                    <!-- Course Materials (Syllabus) -->
+                    <div class="step-card">
+                        <h3
+                            style="color: var(--text-main); margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                            Flight Plan (Syllabus Preview)
+                        </h3>
+                        <div id="materials-list" style="display: grid; gap: 15px;">
+                            <!-- Materials injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Payment Section (Unlock) -->
+                    <div id="payment-section"
+                        style="background: rgba(212, 175, 55, 0.1); padding: 40px; border-radius: 16px; border: 1px solid var(--secondary-color); text-align: center; backdrop-filter: blur(10px);">
+                        <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Unlock Full Access</h3>
+                        <p style="color: var(--text-main); margin-bottom: 20px;">Pay once to unlock all videos, PDF
+                            notes, and live sessions for this course.</p>
+
+                        <div style="margin: 20px 0;">
+                            <input type="text" id="phone-number" placeholder="Enter M-Pesa Number (e.g., 0712345678)"
+                                style="padding: 15px; width: 100%; max-width: 350px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; text-align: center; font-size: 1.1rem;">
+                        </div>
+                        <button onclick="initiatePayment()" class="btn btn-primary"
+                            style="padding: 15px 50px; font-size: 1.1rem;">
+                            Initialize Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseId = urlParams.get('id');
+        const user = JSON.parse(localStorage.getItem('user'));
+        let currentCourse = null;
+        let userHasAccess = false;
+
+        async function fetchCourseDetails() {
+            try {
+                const res = await fetch(`/api/courses/${courseId}`, {
+                    headers: user && user.token ? { 'Authorization': `Bearer ${user.token}` } : {}
+                });
+                const course = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(course.message || 'Failed to load course');
+                }
+
+                currentCourse = course;
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('course-content').style.display = 'block';
+
+                document.getElementById('course-title').textContent = currentCourse.title;
+                document.getElementById('course-price').textContent = `KES ${currentCourse.price}`;
+                document.getElementById('course-description').textContent = currentCourse.description;
+                document.getElementById('course-image').src = currentCourse.thumbnail || 'DEKIMU LOGO.jpg.jpg';
+
+                await checkAccess();
+            } catch (error) {
+                console.error(error);
+                alert('Failed to load course details');
+            }
+        }
+
+        async function checkAccess() {
+            if (!user || !user.token) {
+                renderPaymentSection(false);
+                renderMaterials(false);
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/courses/mycourses', {
+                    headers: { 'Authorization': `Bearer ${user.token}` }
+                });
+                const myCourses = await res.json();
+                userHasAccess = Array.isArray(myCourses) && myCourses.some(c => c._id === courseId);
+
+                if (userHasAccess) {
+                    document.getElementById('payment-section').style.display = 'none';
+                } else {
+                    renderPaymentSection(true);
+                }
+                renderMaterials(userHasAccess);
+
+            } catch (error) {
+                console.error(error);
+                renderPaymentSection(true);
+                renderMaterials(false);
+            }
+        }
+
+        function renderPaymentSection(isLoggedIn) {
+            const section = document.getElementById('payment-section');
+            if (!isLoggedIn) {
+                section.innerHTML = `
+                    <h3 style="color: var(--secondary-color);">Login Required</h3>
+                    <p style="color: var(--text-main);">Create an account or login to pay and unlock all course materials.</p>
+                    <a href="login.html" class="btn btn-primary" style="margin-top: 15px;">Login</a>
+                    <a href="signup.html" class="btn btn-outline" style="margin-top: 15px; margin-left: 10px;">Sign Up</a>
+                `;
+            } else {
+                section.style.display = 'block';
+            }
+        }
+
+        function renderMaterials(hasAccess) {
+            const list = document.getElementById('materials-list');
+            if (currentCourse && currentCourse.content && currentCourse.content.length > 0) {
+                list.innerHTML = currentCourse.content.map((item) => {
+                    let icon = 'file';
+                    if (item.type === 'video') icon = 'play-circle';
+                    if (item.type === 'pdf') icon = 'file-pdf';
+                    if (item.type === 'live') icon = 'video';
+
+                    const isLocked = !hasAccess && !item.isFree && !item.url;
+                    const hasRealUrl = !!item.url;
+
+                    const actionButton = !hasRealUrl || isLocked
+                        ? `<button class="btn btn-outline" style="opacity: 0.6; cursor: not-allowed;"><i class="fas fa-lock"></i> Locked</button>`
+                        : `<a href="${item.url}" target="_blank" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Access</a>`;
+
+                    const itemStyle = (!hasRealUrl || isLocked) ? 'opacity: 0.8;' : '';
+
+                    return `
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; ${itemStyle}">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 40px; height: 40px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary-color);">
+                                <i class="fas fa-${icon}"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0; font-size: 1.1rem; color: var(--text-main);">${item.title}</h4>
+                                <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">${item.type}</span>
+                            </div>
+                        </div>
+                        <div>
+                            ${actionButton}
+                        </div>
+                    </div>
+                `}).join('');
+            } else {
+                list.innerHTML = '<p style="color: var(--text-muted); text-align: center;">No flight data uploaded yet.</p>';
+            }
+        }
+
+        async function initiatePayment() {
+            if (!user || !user.token) {
+                alert('Please login first to pay for this course.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const phoneNumber = document.getElementById('phone-number').value;
+            if (!phoneNumber) {
+                alert('Please enter a phone number');
+                return;
+            }
+
+            if (!phoneNumber.match(/^(07|01)[0-9]{8}$/)) {
+                alert('Please enter a valid Safaricom number (e.g., 0712345678)');
+                return;
+            }
+
+            const btn = document.querySelector('#payment-section button');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Initiating...';
+
+            try {
+                const res = await fetch('/api/payment/stk', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`
+                    },
+                    body: JSON.stringify({ courseId, phoneNumber })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    alert('STK Push Sent! Check your phone to complete the transaction.');
+                    setTimeout(() => location.reload(), 10000);
+                } else {
+                    alert(data.message || 'Payment failed');
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                }
+            } catch (error) {
+                console.error('Payment error:', error);
+                let errorMsg = 'Payment initiation failed. ';
+                if (error.message && error.message.includes('fetch')) {
+                    errorMsg += 'Please check your internet connection.';
+                } else if (error.message) {
+                    errorMsg += error.message;
+                } else {
+                    errorMsg += 'Please try again.';
+                }
+                alert(errorMsg);
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        }
+
+        fetchCourseDetails();
+    </script>
+</body>
+
+</html>

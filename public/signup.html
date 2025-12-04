@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | DEKIMU SPACE PROGRAM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"
+                    style="display: flex; align-items: center; gap: 10px; color: white; text-decoration: none;">
+                    <img src="DEKIMU LOGO.jpg.jpg" alt="Logo"
+                        style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--secondary-color);">
+                    DEKIMU <span>SPACE</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
+            </div>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <section class="section-padding"
+        style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 80px;">
+        <div class="container">
+            <div class="step-card" style="max-width: 450px; margin: 0 auto; padding: 50px; text-align: left;">
+                <div class="section-header" style="margin-bottom: 30px; text-align: center;">
+                    <h2>Join the Mission</h2>
+                    <p>Create your student account</p>
+                </div>
+                <form id="signupForm" class="contact-form">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: var(--text-main);">Full Name</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: var(--text-main);">Email
+                            Address</label>
+                        <input type="email" id="email" required placeholder="Enter your email">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: var(--text-main);">Phone Number</label>
+                        <input type="text" id="phone" required placeholder="e.g., 0712345678">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="display: block; margin-bottom: 8px; color: var(--text-main);">Password</label>
+                        <input type="password" id="password" required placeholder="Create a password">
+                    </div>
+                    <p id="signupError"
+                        style="display:none; color:#ff6b6b; font-size:0.9rem; margin-bottom:15px;"></p>
+                    <button type="submit" class="btn btn-primary" id="signupBtn"
+                        style="width: 100%; padding: 15px;">Sign Up</button>
+                    <p style="margin-top: 25px; text-align: center; font-size: 0.95rem; color: var(--text-muted);">
+                        Already have an account? <a href="login.html"
+                            style="color: var(--secondary-color); font-weight: 600;">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        const signupForm = document.getElementById('signupForm');
+        const signupError = document.getElementById('signupError');
+        const signupBtn = document.getElementById('signupBtn');
+
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            signupError.style.display = 'none';
+            signupError.textContent = '';
+
+            if (!name || !email || !phone || !password) {
+                signupError.textContent = 'Please fill in all fields.';
+                signupError.style.display = 'block';
+                return;
+            }
+
+            try {
+                signupBtn.disabled = true;
+                signupBtn.textContent = 'Creating account...';
+
+                const res = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, phone, password })
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    localStorage.setItem('user', JSON.stringify(data));
+                    window.location.href = 'dashboard.html';
+                } else {
+                    signupError.textContent = data.message || 'Failed to create account.';
+                    signupError.style.display = 'block';
+                }
+            } catch (err) {
+                console.error(err);
+                signupError.textContent = 'An unexpected error occurred. Please try again.';
+                signupError.style.display = 'block';
+            } finally {
+                signupBtn.disabled = false;
+                signupBtn.textContent = 'Sign Up';
+            }
+        });
+    </script>
+</body>
+
+</html>

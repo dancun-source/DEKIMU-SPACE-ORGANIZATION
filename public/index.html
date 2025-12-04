@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEKIMU SPACE ORGANIZATION</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">DEKIMU <span>SPACE</span></div>
+            <div class="nav-links">
+                <a href="#hero" class="active">Home</a>
+                <a href="#about">Mission</a>
+                <a href="#pillars">Pillars</a>
+                <a href="#notes">Notes</a>
+                <a href="#contact">Contact</a>
+                <a href="admin.html" id="missionControlLink" class="btn btn-outline"
+                    style="padding: 8px 16px; display: none;">Mission Control</a>
+                <a href="signup.html" class="btn btn-outline" style="padding: 8px 18px;">Sign Up</a>
+                <a href="login.html" class="btn btn-primary" style="padding: 8px 20px;">Login</a>
+            </div>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>DEKIMU SPACE PROGRAM</h1>
+                <p>Exploring the infinite, one lesson at a time. Redefining leadership through transformation.</p>
+                <div class="hero-btns">
+                    <a href="signup.html" class="btn btn-primary">Create Student Account</a>
+                    <a href="login.html" class="btn btn-outline">Student Login</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Vision</h2>
+                <p>A hub for holistic & exceptional leadership.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-up">
+                    <div class="about-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Vision</h3>
+                    <p>At DEKIMU SPACE PROGRAM, our vision is to nurture a new generation of leaders who embody
+                        integrity, innovation, and empathy, empowering individuals to realize their fullest potential.
+                    </p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="about-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Mission</h3>
+                    <p>Redefining leadership through transformation. We empower individuals with the skills, mindset,
+                        and values necessary for impactful leadership in today’s ever-changing world.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="about-icon"><i class="fas fa-users"></i></div>
+                    <h3>People Matter</h3>
+                    <p>At DEKIMU Space Program, we don’t just talk about change - we train it. Through public speaking,
+                        academic excellence, mental wellness, and visionary leadership, we’re raising a new standard.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Aspirations -->
+            <div class="section-header" style="margin-top: 80px;" data-aos="fade-up">
+                <h2>Our Aspirations</h2>
+            </div>
+            <div class="container" style="max-width: 800px; text-align: center;" data-aos="fade-up">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px; font-size: 1.1rem; color: #555;"><i class="fas fa-check-circle"
+                            style="color: var(--secondary-color); margin-right: 10px;"></i> To nurture and empower
+                        future leaders who will transform society.</li>
+                    <li style="margin-bottom: 15px; font-size: 1.1rem; color: #555;"><i class="fas fa-check-circle"
+                            style="color: var(--secondary-color); margin-right: 10px;"></i> To promote holistic
+                        excellence in academics, leadership, and well-being.</li>
+                    <li style="margin-bottom: 15px; font-size: 1.1rem; color: #555;"><i class="fas fa-check-circle"
+                            style="color: var(--secondary-color); margin-right: 10px;"></i> To create a supportive
+                        community for growth, impact, and innovation.</li>
+                    <li style="margin-bottom: 15px; font-size: 1.1rem; color: #555;"><i class="fas fa-check-circle"
+                            style="color: var(--secondary-color); margin-right: 10px;"></i> To lead a generational
+                        movement of positive change and vision-driven action.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillars Section -->
+    <section id="pillars" class="courses section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Pillars</h2>
+                <p>The Foundation of Our Program</p>
+            </div>
+            <div class="courses-grid">
+                <!-- Pillar 1 -->
+                <div class="course-card" data-aos="fade-up">
+                    <div class="course-content" style="text-align: center; padding: 40px 20px;">
+                        <div class="card-icon"><i class="fas fa-microphone-alt"></i></div>
+                        <h3>Public Speaking</h3>
+                        <p>Master the art of communication and find your voice to influence change.</p>
+                        <button class="btn btn-primary enroll-btn" data-course-id="public-speaking"
+                            data-amount="1500">Enroll Now</button>
+                    </div>
+                </div>
+                <!-- Pillar 2 -->
+                <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="course-content" style="text-align: center; padding: 40px 20px;">
+                        <div class="card-icon"><i class="fas fa-chess-king"></i></div>
+                        <h3>Leadership Excellence</h3>
+                        <p>Develop the skills to lead with integrity, vision, and purpose.</p>
+                        <button class="btn btn-primary enroll-btn" data-course-id="leadership" data-amount="1500">Enroll
+                            Now</button>
+                    </div>
+                </div>
+                <!-- Pillar 3 -->
+                <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="course-content" style="text-align: center; padding: 40px 20px;">
+                        <div class="card-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Mental Health</h3>
+                        <p>Prioritizing wellness and resilience for a balanced life.</p>
+                        <button class="btn btn-primary enroll-btn" data-course-id="mental-health"
+                            data-amount="1500">Enroll
+                            Now</button>
+                    </div>
+                </div>
+                <!-- Pillar 4 -->
+                <div class="course-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="course-content" style="text-align: center; padding: 40px 20px;">
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Academic Excellence</h3>
+                        <p>Striving for the highest standards in learning and intellectual growth.</p>
+                        <button class="btn btn-primary enroll-btn" data-course-id="academic-excellence"
+                            data-amount="1500">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="instructors section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Command Center</h2>
+                <p>Meet Our Leadership</p>
+            </div>
+
+            <!-- Director -->
+            <div class="leader-showcase" data-aos="fade-up">
+                <div class="leader-img">
+                    <img src="Director DSP.png" alt="Director">
+                </div>
+                <div class="leader-info">
+                    <h3>Director</h3>
+                    <blockquote
+                        style="font-size: 1.1rem; font-style: italic; color: #555; border-left: 4px solid var(--secondary-color); padding-left: 15px; margin-bottom: 15px;">
+                        "Leadership production gives credibility to the leader. Leadership brings clarity and reality to
+                        the vision."
+                    </blockquote>
+                    <p>At DEKIMU SPACE PROGRAM we train leadership in all its ramifications; corporate and institutional
+                        training. We are defined by excellence as well as exceptionalism in training on:</p>
+                    <ul style="list-style: disc; padding-left: 20px; margin-top: 10px; color: #555;">
+                        <li>Excellence in leadership</li>
+                        <li>Mental health</li>
+                        <li>Academic excellence</li>
+                        <li>Public speaking therapy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Vice Chair -->
+            <div class="leader-showcase reverse" data-aos="fade-up">
+                <div class="leader-img">
+                    <img src="VC.jpg" alt="Vice Chairperson">
+                </div>
+                <div class="leader-info">
+                    <h3>Vice Chairperson</h3>
+                    <h4 style="color: var(--secondary-color); margin-bottom: 10px;">Hibaq Noor</h4>
+                    <blockquote
+                        style="font-size: 1.1rem; font-style: italic; color: #555; border-left: 4px solid var(--secondary-color); padding-left: 15px; margin-bottom: 15px;">
+                        "Where Growth Takes Flight!"
+                    </blockquote>
+                    <p>As Vice Chairperson, I proudly welcome you to a transformative experience designed to shape
+                        strong minds, sharp voices, and bold leaders.</p>
+                    <p>Through mental health empowerment, academic mastery, leadership training, and public speaking
+                        skills, DEKIMU is more than a program — it's a movement.</p>
+                </div>
+            </div>
+
+            <!-- Additional Leadership Roles -->
+            <div class="instructors-grid" style="margin-top: 60px;">
+                <div class="instructor-card" data-aos="fade-up">
+                    <div class="instructor-info">
+                        <h3>Organising Secretary’s Desk</h3>
+                        <p>At DEKIMU, we are committed to developing purpose-driven leaders through holistic training.
+                            We believe in raising a new breed of leaders — bold, balanced, and purpose-driven.</p>
+                    </div>
+                </div>
+                <div class="instructor-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="instructor-info">
+                        <h3>Media In-Charge</h3>
+                        <p>Responsible for shaping and amplifying the voice of our initiative. We work to showcase the
+                            transformative work of our pillars while fostering a positive and consistent image.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Grid (Dynamic) -->
+            <div id="teamContainer" class="team-grid"></div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section-padding" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Mission Gallery</h2>
+                <p>Capturing Our Journey</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up"><img src="P 1.jpg" alt="Gallery 1">
+                    <div class="overlay">
+                        <p>Leadership is the capacity to translate vision into reality.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up"><img src="P 3.jpg" alt="Gallery 3">
+                    <div class="overlay">
+                        <p>Education is the most powerful weapon you can use to change the world.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up"><img src="P 4.jpg" alt="Gallery 4">
+                    <div class="overlay">
+                        <p>Every great journey begins with a single step.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up"><img src="P 5.jpg" alt="Gallery 5">
+                    <div class="overlay">
+                        <p>Together we achieve more. Teamwork makes the dream work.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up"><img src="P 6.jpg" alt="Gallery 6">
+                    <div class="overlay">
+                        <p>Success is not the key to happiness. Happiness is the key to success.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up"><img src="P 7.jpg" alt="Gallery 7">
+                    <div class="overlay">
+                        <p>Your only limit is your mind.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Section (Harvard-Style) -->
+    <section id="enrollment" class="section-padding" style="background-color: #fff;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Empower Your Learning Journey</h2>
+                <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; line-height: 1.8; color: #444;">
+                    The DEKIMU Learning Program offers structured, high-quality learning materials designed to help
+                    students build strong academic foundations. Enroll today to access expert-created video lessons,
+                    comprehensive PDF notes, and interactive live learning sessions. Our content is tailored to support
+                    effective, flexible, and self-paced study.
+                </p>
+            </div>
+
+            <!-- What You Gain -->
+            <div style="margin-top: 60px;">
+                <h3 class="text-center" style="margin-bottom: 40px; font-size: 1.8rem;">What You Gain After Enrolling
+                </h3>
+                <div class="about-grid">
+                    <div class="about-item" data-aos="fade-up">
+                        <div class="about-icon"><i class="fas fa-video"></i></div>
+                        <h3>High-Quality Video Lessons</h3>
+                        <p>Engage with clear, detailed instructional videos prepared by knowledgeable educators.</p>
+                    </div>
+                    <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="about-icon"><i class="fas fa-file-pdf"></i></div>
+                        <h3>Downloadable PDF Notes</h3>
+                        <p>Access well-organized, exam-ready study notes updated regularly.</p>
+                    </div>
+                    <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="about-icon"><i class="fas fa-users-cog"></i></div>
+                        <h3>Live Interactive Sessions</h3>
+                        <p>Join scheduled live discussions, Q&A meetings, and instructor-led tutorials.</p>
+                    </div>
+                    <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="about-icon"><i class="fas fa-star"></i></div>
+                        <h3>Exclusive Updates</h3>
+                        <p>Receive new materials and content upgrades as they are released.</p>
+                    </div>
+                    <div class="about-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="about-icon"><i class="fas fa-clock"></i></div>
+                        <h3>24/7 Access</h3>
+                        <p>Learn at your own pace, anytime, from any device.</p>
+                    </div>
+                    <div class="about-item" data-aos="fade-up" data-aos-delay="500">
+                        <div class="about-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Continuous Progress Tracking</h3>
+                        <p>Keep track of your purchased courses and completed lessons.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How Enrollment Works -->
+            <div style="margin-top: 80px; background: var(--bg-light); padding: 60px; border-radius: 8px;">
+                <h3 class="text-center" style="margin-bottom: 50px; font-size: 1.8rem;">How Enrollment Works</h3>
+                <div class="process-steps"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div class="step-card" style="text-align: center;" data-aos="fade-up">
+                        <div
+                            style="font-size: 2rem; font-weight: bold; color: var(--secondary-color); margin-bottom: 15px;">
+                            01</div>
+                        <h4>Create Your Account</h4>
+                        <p>Register using your name, email, and phone number.</p>
+                    </div>
+                    <div class="step-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            style="font-size: 2rem; font-weight: bold; color: var(--secondary-color); margin-bottom: 15px;">
+                            02</div>
+                        <h4>Browse Courses</h4>
+                        <p>Choose the subject or study resource you want.</p>
+                    </div>
+                    <div class="step-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="200">
+                        <div
+                            style="font-size: 2rem; font-weight: bold; color: var(--secondary-color); margin-bottom: 15px;">
+                            03</div>
+                        <h4>Make a Secure Payment</h4>
+                        <p>Pay via M-Pesa Daraja STK Push.<br><small>Payment receiving number: 0729089668</small></p>
+                    </div>
+                    <div class="step-card" style="text-align: center;" data-aos="fade-up" data-aos-delay="300">
+                        <div
+                            style="font-size: 2rem; font-weight: bold; color: var(--secondary-color); margin-bottom: 15px;">
+                            04</div>
+                        <h4>Instant Access</h4>
+                        <p>Once payment is confirmed, your learning materials appear in your dashboard automatically.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Learners Choose DEKIMU -->
+            <div
+                style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+                <div data-aos="fade-right">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Why Learners Choose DEKIMU</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center;"><i
+                                class="fas fa-check" style="color: var(--secondary-color); margin-right: 15px;"></i>
+                            Expert-created academic content</li>
+                        <li style="margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center;"><i
+                                class="fas fa-check" style="color: var(--secondary-color); margin-right: 15px;"></i>
+                            Clean, intuitive learning platform</li>
+                        <li style="margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center;"><i
+                                class="fas fa-check" style="color: var(--secondary-color); margin-right: 15px;"></i>
+                            Seamless mobile and desktop experience</li>
+                        <li style="margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center;"><i
+                                class="fas fa-check" style="color: var(--secondary-color); margin-right: 15px;"></i>
+                            Secure M-Pesa payment system</li>
+                        <li style="margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center;"><i
+                                class="fas fa-check" style="color: var(--secondary-color); margin-right: 15px;"></i>
+                            Professional-level content protection</li>
+                        <li style="margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center;"><i
+                                class="fas fa-check" style="color: var(--secondary-color); margin-right: 15px;"></i>
+                            Trusted by students for reliable study materials</li>
+                    </ul>
+                </div>
+                <div data-aos="fade-left"
+                    style="background: var(--primary-color); padding: 40px; border-radius: 8px; color: white; text-align: center;">
+                    <h3>Ready to Excel?</h3>
+                    <p style="color: #ddd; margin-bottom: 30px;">Join thousands of students transforming their future
+                        with DEKIMU.</p>
+                    <a href="#pillars" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Enroll
+                        Now</a>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #aaa;">Secure Payment • Instant Access</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notes Section -->
+    <section id="notes" class="section-padding">
+        <div class="container text-center">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Flight Data</h2>
+                <p>Academic Resources</p>
+            </div>
+            <div class="notes-card"
+                style="background: #fff; padding: 40px; border-radius: 15px; box-shadow: var(--shadow-md); display: inline-block; max-width: 600px;"
+                data-aos="fade-up">
+                <i class="fas fa-book-open"
+                    style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px;"></i>
+                <h3>Dekimu Space Notes</h3>
+                <p>Access structured lecture notes, projects, and academic resources directly from our central
+                    repository.</p>
+                <a href="https://drive.google.com/drive/folders/1NFJLlEORWr7OeO5VujZAzii01x9NOD0y?usp=sharing"
+                    target="_blank" class="btn btn-primary" style="margin-top: 20px;">Open Notes Folder</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Establish Comms</h2>
+                <p>Ready to start your mission?</p>
+            </div>
+            <div class="contact-wrapper" data-aos="fade-up"
+                style="background: #fff; padding: 50px; border-radius: 15px; box-shadow: var(--shadow-md); max-width: 800px; margin: 0 auto;">
+                <div class="contact-info" style="text-align: center; margin-bottom: 30px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><strong>Inquiries:</strong> 0706 822 796 / 0759
+                        329 945</p>
+                    <p style="font-size: 1.2rem;"><strong>Email:</strong> info@dekimu.org</p>
+                </div>
+                <form class="contact-form" style="display: grid; gap: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <input type="text" placeholder="First Name"
+                            style="padding: 15px; border: 1px solid #ddd; border-radius: 4px; width: 100%;">
+                        <input type="text" placeholder="Last Name"
+                            style="padding: 15px; border: 1px solid #ddd; border-radius: 4px; width: 100%;">
+                    </div>
+                    <input type="email" placeholder="Email Address"
+                        style="padding: 15px; border: 1px solid #ddd; border-radius: 4px; width: 100%;">
+                    <textarea rows="5" placeholder="Your Message"
+                        style="padding: 15px; border: 1px solid #ddd; border-radius: 4px; width: 100%;"></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Transmit Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>DEKIMU <span>SPACE</span></h3>
+                    <p>Exploring the infinite, one lesson at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">Mission</a></li>
+                        <li><a href="#pillars">Pillars</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DEKIMU SPACE PROGRAM. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Complete Your Enrollment</h3>
+            <p>Enter your M-Pesa number to pay.</p>
+            <div class="payment-details">
+                <p><strong>Course:</strong> <span id="modalCourseName">Course Name</span></p>
+                <p><strong>Amount:</strong> KES <span id="modalAmount">0</span></p>
+            </div>
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="phoneNumber">M-Pesa Phone Number</label>
+                    <input type="tel" id="phoneNumber" placeholder="e.g., 0712345678" required
+                        pattern="^(07|01)[0-9]{8}$">
+                </div>
+                <button type="submit" class="btn btn-primary" id="payBtn">Pay Now</button>
+            </form>
+            <div id="paymentStatus" class="payment-status"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="script.js"></script>
+    <script>
+        // Show Mission Control button only for admin
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const missionLink = document.getElementById('missionControlLink');
+
+            if (user && user.role === 'admin' && missionLink) {
+                missionLink.style.display = 'inline-block';
+            } else if (missionLink) {
+                missionLink.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
