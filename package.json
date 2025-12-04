@@ -2,7 +2,7 @@
   "name": "dkm",
   "version": "1.0.0",
   "description": "DEKIMU SPACE ORGANIZATION\r Welcome to the official repository for DEKIMU SPACE ORGANIZATION!\r This project is dedicated to exploring and showcasing space-related content, initiatives, and collaborations under the DEKIMU umbrella.",
-  "main": "script.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
